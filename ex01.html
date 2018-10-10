@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<style>
+    .sample{
+        width: 100px;
+        height: 100px;
+        background-color: olive;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -50px;
+        transition-duration: 3s;
+    }
+
+    .big{
+        transform: scale(2) rotateY(2000deg) rotateX(2000deg);
+    }
+
+
+</style>
+<button id="showBtn">SHOW</button>
+<button id="hideBtn">HIDE</button>
+<div class="sample big">sample</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+
+        console.log("aaaaaa")
+
+        $("#hideBtn").click(function () {
+            $(".sample").hide('slow');
+        });
+        $("#showBtn").click(function () {
+            $(".sample").show('slow');
+        });
+    });
+
+    $(document).ready(function(){
+        var sample = $(".sample");
+
+        $.getJSON("http://10.10.10.83:8080/jsonEx/quiz",(result)=>{
+        sample.html(result.name).addClass("big");
+        });
+    });
+
+</script>
+</body>
+</html>
